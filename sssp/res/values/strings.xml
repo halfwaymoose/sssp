@@ -4,5 +4,7 @@
     <string name="app_name">Super Simple Sound Profiles!</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="groups">Groups</string>
+    <string name="times">Times</string>
 
 </resources>
