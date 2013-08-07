@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="Button" />
+            android:text="@string/back_arrow" />
 
         <TextView
             android:id="@+id/activity_groups_txt_title"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/activity_groups_btn_up"
-            android:text="Large Text"
+            android:text="@string/groups"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="Button" />
+            android:text="@string/add_plus" />
     </RelativeLayout>
 
     <ListView

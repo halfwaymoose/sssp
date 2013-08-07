@@ -1,9 +1,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:id="@+id/action_groups"
+        android:orderInCategory="0"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:title="Groups"/>
+
+    <item
+        android:id="@+id/action_times"
+        android:orderInCategory="1"
+        android:showAsAction="never"
+        android:title="Times"/>
+
+    <item
+        android:id="@+id/action_cancel"
+        android:orderInCategory="3"
+        android:showAsAction="never"
+        android:title="Cancel"/>
 
 </menu>
