@@ -5,13 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
 
 public class DB extends SQLiteOpenHelper {
 
 	public static final String DB_NAME = "db";
 	public static final int DB_VERSION = 1;
 
-	public static final String TBL_GROUP = "group";
+	public static final String TBL_GROUP = "groups";
 	public static final String TBL_GROUP_ID = "_id";
 	public static final String TBL_GROUP_NAME = "name";
 	public static final String TBL_GROUP_COLOR = "color";
@@ -22,7 +23,7 @@ public class DB extends SQLiteOpenHelper {
 	public static final String TBL_GROUP_VIB_PHONE = "v_phone";
 	public static final String TBL_GROUP_VIB_NOTIFY = "v_notify";
 	
-	public static final String TBL_TIMES = "time";
+	public static final String TBL_TIMES = "times";
 	public static final String TBL_TIMES_ID = "_id";
 	public static final String TBL_TIMES_GROUP_ID = "g_id";
 	public static final String TBL_TIMES_START = "start";
@@ -161,7 +162,7 @@ public class DB extends SQLiteOpenHelper {
 		long ret;
 		
 		db = getWritableDatabase();
-		ret = db.delete(TBL_GROUP, TBL_GROUP_ID,  null);
+		ret = db.delete(TBL_GROUP, TBL_GROUP_ID + "=" + id,  null);
 		
 		db.close();
 		return ret;
@@ -173,7 +174,7 @@ public class DB extends SQLiteOpenHelper {
 		long ret;
 		
 		db = getWritableDatabase();
-		ret = db.delete(TBL_TIMES, TBL_TIMES_ID,  null);
+		ret = db.delete(TBL_TIMES, TBL_TIMES_ID + "=" + id,  null);
 		
 		db.close();
 		return ret;
@@ -207,12 +208,63 @@ public class DB extends SQLiteOpenHelper {
 		
 	}
 	
+	public Cursor getGroups() {
+		SQLiteDatabase db;
+		Cursor cursor;
+		
+		db = getReadableDatabase();
+		cursor = db.query(TBL_GROUP, null, null, null, null, null, null);
+		
+		if (cursor.getCount() > 0) {
+			
+			cursor.moveToFirst();
+			
+			return cursor;
+			
+		} else {
+			
+			cursor.close();
+			db.close();
+			
+			return null;
+			
+		}
+		
+	}
+	
 	public Cursor getTime(long id) {
 		SQLiteDatabase db;
 		Cursor cursor;
 		String selection;
 		
 		selection = TBL_TIMES_ID + " = " + id;
+		
+		db = getReadableDatabase();
+		cursor = db.query(TBL_TIMES, null, selection, null, null, null, null);
+		
+		if (cursor.getCount() > 0) {
+			
+			cursor.moveToFirst();
+			
+			return cursor;
+			
+		} else {
+			
+			cursor.close();
+			db.close();
+			
+			return null;
+			
+		}
+		
+	}
+	
+	public Cursor getTimes(long groupID) {
+		SQLiteDatabase db;
+		Cursor cursor;
+		String selection;
+		
+		selection = TBL_TIMES_GROUP_ID + " = " + groupID;
 		
 		db = getReadableDatabase();
 		cursor = db.query(TBL_TIMES, null, selection, null, null, null, null);
