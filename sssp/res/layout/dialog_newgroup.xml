@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/dialog_newgroup_txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="20"
+        android:hint="Group Name" 
+        android:singleLine="true">
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/dialog_newgroup_btn_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dialog_newgroup_txt_name"
+        android:background="#ffff00" />
+
+    <SeekBar
+        android:id="@+id/dialog_newgroup_sk_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dialog_newgroup_btn_color"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/dialog_newgroup_btn_color" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dialog_newgroup_btn_color"
+        android:layout_toLeftOf="@+id/dialog_newgroup_sk_notify"
+        android:text="Phone Volume"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_phone_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/dialog_newgroup_txt_phone"
+        android:layout_below="@+id/dialog_newgroup_txt_phone"
+        android:gravity="center_horizontal"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <SeekBar
+        android:id="@+id/dialog_newgroup_sk_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dialog_newgroup_txt_phone_percent"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/dialog_newgroup_txt_phone" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_notify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dialog_newgroup_txt_phone_percent"
+        android:text="Notification Volume"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_notify_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/dialog_newgroup_txt_notify"
+        android:layout_below="@+id/dialog_newgroup_txt_notify"
+        android:text="Small Text"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <SeekBar
+        android:id="@+id/dialog_newgroup_sk_notify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dialog_newgroup_txt_notify_percent"
+        android:layout_toRightOf="@+id/dialog_newgroup_txt_notify" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_media"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/dialog_newgroup_txt_notify_percent"
+        android:layout_below="@+id/dialog_newgroup_txt_notify_percent"
+        android:text="Media Volume"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_media_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/dialog_newgroup_txt_media"
+        android:layout_below="@+id/dialog_newgroup_txt_media"
+        android:gravity="center_horizontal"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <SeekBar
+        android:id="@+id/dialog_newgroup_sk_media"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dialog_newgroup_txt_media_percent"
+        android:layout_toRightOf="@+id/dialog_newgroup_txt_media" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/dialog_newgroup_txt_media_percent"
+        android:layout_below="@+id/dialog_newgroup_txt_media_percent"
+        android:text="Alarm Volume"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_alarm_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/dialog_newgroup_txt_alarm"
+        android:layout_below="@+id/dialog_newgroup_txt_alarm"
+        android:text="Small Text"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <SeekBar
+        android:id="@+id/dialog_newgroup_sk_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dialog_newgroup_txt_alarm_percent"
+        android:layout_alignLeft="@+id/dialog_newgroup_sk_media" />
+
+    <LinearLayout
+        android:id="@+id/dialog_newgroup_lay_dialog_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dialog_newgroup_lay_vibrate" >
+
+        <Button
+            android:id="@+id/dialog_newgroup_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/dialog_newgroup_btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="OK" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_newgroup_lay_vibrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/dialog_newgroup_txt_vibrate" >
+
+        <CheckBox
+            android:id="@+id/dialog_newgroup_chk_phone_vib"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:gravity=""
+            android:text="Phone" />
+
+        <CheckBox
+            android:id="@+id/dialog_newgroup_chk_notify_vib"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Notifications" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_newgroup_txt_vibrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/dialog_newgroup_txt_alarm_percent"
+        android:text="Vibrate"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>
