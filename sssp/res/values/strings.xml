@@ -6,14 +6,17 @@
     <string name="hello_world">Hello world!</string>
     <string name="groups">Groups</string>
     <string name="times">Times</string>
+
     <string-array name="main_menu_items">
-        <item >Groups</item>
-        <item >Times</item>
-        <item >Cancel</item>
+        <item>Groups</item>
+        <item>Times</item>
+        <item>Cancel</item>
     </string-array>
-        <string name="add">Add</string>
-        <string name="add_pluss">+</string>
-        <string name="add_plus">+</string>
-        <string name="back_arrow">&lt;&lt;</string>
+
+    <string name="add">Add</string>
+    <string name="add_pluss">+</string>
+    <string name="add_plus">+</string>
+    <string name="back_arrow">&lt;&lt;</string>
+    <string name="title_activity_add_group">AddGroupActivity</string>
 
 </resources>

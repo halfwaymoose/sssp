@@ -1,7 +1,9 @@
 package com.halfwaymoose.sssp;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -30,22 +32,20 @@ public class TimesActivity extends ListActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_times);
+		Bundle extras;
 		
-		Bundle extras = getIntent().getExtras();
+		extras = getIntent().getExtras();
 		
 		if (extras != null && extras.containsKey(DB.TBL_GROUP_ID)) {
 			
 			mGroupID = extras.getLong(DB.TBL_GROUP_ID);
-			
 		} else {
 			
 			// something went wrong...
 			finish();
-			
 		}
 
 		init();
-
 	}
 
 	private void init() {
@@ -64,47 +64,82 @@ public class TimesActivity extends ListActivity implements OnClickListener {
 
 
 			}
-
 		});
+		
+		// TODO edit time
 		getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
-
-				// TODO edit group
-				DB db = new DB(TimesActivity.this);
-				db.deleteTime(id);
-
-				Cursor cursor = db.getTimes(mGroupID);
-				loadCursor(cursor);
-
+				String details;
+				
+				details = (String) view.getTag();
+				
+				deleteTime(id, details);
+				
 				return false;
 			}
 		});
 		
 	}
+	
+	private void deleteTime(final long id, String details) {
+		AlertDialog.Builder builder;
+		
+		builder = new AlertDialog.Builder(this);
+		builder.setTitle("Delete Time");
+		builder.setMessage("Are you sure you wante to delete " + details);
+		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				DB db;
+				
+				db = new DB(TimesActivity.this);
+				db.deleteTime(id);
+				
+				db.close();
+				dialog.dismiss();
+				
+				loadCursor();
+			}
+		});	
+		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				dialog.dismiss();
+			}
+		});
 
-	public void loadCursor(Cursor cursor) {
+		builder.create().show();
+	}
 
+	public void loadCursor() {
 		MyListAdapter adapter;
-
-		adapter = new MyListAdapter(this, cursor);
-
-		setListAdapter(adapter);
-
+		DB db;
+		Cursor cursor;
+		
+		db = new DB(this);
+		cursor = db.getTimes(mGroupID);
+		adapter = (MyListAdapter) getListAdapter();
+		
+		if (adapter != null) {
+		
+			adapter.changeCursor(cursor);
+		} else {
+			
+			adapter = new MyListAdapter(this, cursor);
+			setListAdapter(adapter);	
+		}
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		DB db;
-		Cursor cursor;
-
-		db = new DB(this);
-		cursor = db.getTimes(mGroupID);
-
-		loadCursor(cursor);
-
+		
+		loadCursor();
 	}
 
 	@Override
@@ -113,27 +148,26 @@ public class TimesActivity extends ListActivity implements OnClickListener {
 		switch (view.getId()) {
 
 		case R.id.activity_times_btn_add:
+			
 			addTime();
+			
 			break;
-
 		case R.id.activity_times_btn_up:
+			
 			finish();
+			
 			break;
-
 		}
 	}
 
+	// TODO
 	private void addTime() {
 		DB db;
-		Cursor cursor;
 
 		db = new DB(this);
 		db.insertTime(mGroupID, 1000, 1000);
 
-		cursor = db.getTimes(mGroupID);
-
-		loadCursor(cursor);
-
+		loadCursor();
 	}
 
 	class MyListAdapter extends CursorAdapter {
@@ -143,6 +177,7 @@ public class TimesActivity extends ListActivity implements OnClickListener {
 
 		}
 
+		// TODO
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
 			TextView textView;
@@ -152,9 +187,10 @@ public class TimesActivity extends ListActivity implements OnClickListener {
 
 			textView = (TextView) view;
 			textView.setText(id.toString());
-
+			textView.setTag(id.toString());
 		}
 
+		// TODO
 		@Override
 		public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
 			TextView textView;
@@ -164,7 +200,7 @@ public class TimesActivity extends ListActivity implements OnClickListener {
 
 			return textView;
 		}
-
 	}
-
+	
+	
 }

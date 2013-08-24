@@ -169,6 +169,18 @@ public class DB extends SQLiteOpenHelper {
 		
 	}
 	
+	public long deleteTimesByGroup(long id) {
+		SQLiteDatabase db;
+		long ret;
+		
+		db = getWritableDatabase();
+		ret = db.delete(TBL_TIMES, TBL_TIMES_GROUP_ID + "=" + id,  null);
+		
+		db.close();
+		return ret;
+		
+	}
+	
 	public long deleteTime(long id) {
 		SQLiteDatabase db;
 		long ret;
